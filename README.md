@@ -1,30 +1,47 @@
-# React + TypeScript + Vite
+# Todo List Microfrontend
+This repository contains a Todo List application built as a microfrontend using React, TypeScript, Vite, and Module Federation.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Prerequisites
+* Node.js
+* Yarn
+## Installation
+1. Clone the repository:
 
-Currently, two official plugins are available:
+```bash
+git clone https://github.com/guimap01/todo-list.git
+cd todo-list
+```
+2. Install dependencies for the microfrontend app:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+cd todo-list-microfrontend
+yarn install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Running the Applications
+
+1. Directly using the App
+
+```bash
+yarn dev
+```
+
+2. Consuming MFE
+To consume the app as a MFE you will need to first build
+```bash
+yarn build
+```
+
+then run the preview script
+```bash
+yarn preview
+```
+
+The App can be consumed in the followind URL:
+```bash
+http://localhost:3000/assets/remoteEntry.js
+```
+
+This App will export two Component
+* Todo - The `Todo` component 
+* TodoProvider - The `TodoProvider` component handles all the functionality of the Todo app and exposes a hook called `useTodos` which provides access to the following methods and values: `todos`, `addTodo`, `toggleTodoCompletion`, `removeTodo`, `error` 
